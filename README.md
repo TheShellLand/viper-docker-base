@@ -1,5 +1,12 @@
 # viper-docker-base
-Base image for https://github.com/viper-framework/viper
+
+Base image for https://github.com/TheShellLand/viper-docker-community
+
+#### Docker
+
+Docker image: theshellland/viper-docker-base 
+
+Docker hub: https://hub.docker.com/r/theshellland/viper-docker-base
 
 
 ```
@@ -20,4 +27,4 @@ If you wish to download community modules from GitHub run:
 viper > 
 ```
 
-Used to build https://github.com/TheShellLand/viper-docker-community
+Built from: https://github.com/viper-framework/viper
