@@ -1,5 +1,8 @@
 FROM python:3
 
+USER root
+WORKDIR /
+
 # if you want to pip install viper-framework
 #RUN apt update \
 #    && apt install -y git gcc python3-dev python3-pip \
@@ -17,3 +20,5 @@ RUN apt install -y libfuzzy-dev
 RUN git clone https://github.com/viper-framework/viper \
     && cd viper \
     && pip3 install .
+
+ENTRYPOINT ["viper"]
