@@ -8,7 +8,7 @@ Docker image: theshellland/viper-docker-base
 Docker hub: https://hub.docker.com/r/theshellland/viper-docker-base
 
 
-###### v2.0-rc9, dev:
+###### v2.0-rc9, latest:
 ```
          _
         (_)
@@ -29,7 +29,7 @@ viper >
 
 ```
 
-###### v1.3-dev, stable, latest:
+###### v1.3-dev, stable:
 ```
          _
         (_)
