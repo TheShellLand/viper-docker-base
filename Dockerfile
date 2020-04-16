@@ -1,6 +1,6 @@
 FROM python:3
 
-ENV VERSION 2.x
+ENV VERSION v1.3
 
 USER root
 WORKDIR /
