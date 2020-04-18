@@ -19,7 +19,7 @@ RUN apt update \
 
 # install latest from git
 RUN if [ "$VERSION" = "2.x" ]; then \
-    git clone https://github.com/viper-framework/viper \
+    git clone --recurse-submodules https://github.com/viper-framework/viper \
     && cd viper \
     && pip3 install . ; fi
 
@@ -31,7 +31,7 @@ RUN if [ "$VERSION" = "2.x" ]; then \
 
 # install from git
 RUN if [ "$VERSION" = "v1.3" ]; then \
-    git clone https://github.com/viper-framework/viper \
+    git clone --recurse-submodules https://github.com/viper-framework/viper \
     && cd viper \
     && git reset --hard $VERSION \
     # fix Cannot import name "Feature" from "setuptools"
@@ -70,20 +70,6 @@ RUN if [ "$VERSION" = "v1.3" ]; then \
     && pip3 install -r requirements-base.txt \
     && pip3 install -r requirements-modules.txt \
     && pip3 install -r requirements-web.txt \
-    # fix No module named 'viper.modules.pdftools'
-    && cd /viper/viper/modules \
-    && rm -rf pdftools \
-    && git clone https://github.com/viper-framework/pdftools \
-    && cd pdftools \
-    && git reset --hard 5e38ea45fde26b1713fb0057ed0e9f7a64ddd0e8 \
-    && cd /viper \
-    # fix pymacho_helper
-    && cd /viper/viper/modules \
-    && rm -rf pymacho_helper \
-    && git clone https://github.com/viper-framework/Mach-O pymacho_helper \
-    && cd pymacho_helper \
-    && git reset --hard 5717c9a533db7cae269c4de36f079a1429113f4f \
-    && cd /viper \
     # fix module 'pip' has no attribute 'req'
     && pip3 install --upgrade pip==9 \
     && python setup.py build \
