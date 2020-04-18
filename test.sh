@@ -4,4 +4,4 @@
 
 set -xe
 
-docker run --rm -it viper-docker-base $@
+docker run --rm -it theshellland/viper-docker-base $@
