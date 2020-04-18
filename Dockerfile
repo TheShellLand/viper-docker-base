@@ -1,16 +1,21 @@
 FROM python:3
 
 ENV VERSION v1.3
+ENV TMPINSTALL /install
 
 USER root
 WORKDIR /
 
 # from docs
 RUN apt update \
-    && apt install -y git gcc python3-dev python3-pip
-
-# fix
-RUN apt install -y libfuzzy-dev
+    && apt install -y git gcc python3-dev python3-pip \
+    # fix
+    && apt install -y libfuzzy-dev \
+    # cleanup
+    && apt autoremove -y \
+    && apt autoclean -y \
+    && apt clean -y \
+    && rm -rf /var/lib/apt/lists/*
 
 # install latest from git
 RUN if [ "$VERSION" = "2.x" ]; then \
@@ -91,12 +96,8 @@ RUN if [ "$VERSION" = "v1.3" ]; then \
     # delete all modules
     && rm -rf /usr/local/lib/python3.8/site-packages/viper-1.3.dev0-py3.8.egg/viper/modules/* ; fi
 
-# cleanup
-RUN apt autoremove -y \
-    && apt autoclean \
-    && apt clean \
-    && rm -rf /tmp/*
-
 USER root
+
+EXPOSE 8080
 
 ENTRYPOINT ["viper"]
