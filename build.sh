@@ -2,4 +2,4 @@
 
 # build viper docker
 
-docker build -t viper-docker-base -f Dockerfile .
+docker build -t viper-docker-base $@ -f Dockerfile .
